@@ -1,6 +1,5 @@
 package com.github.florent37.materialviewpager.sample.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,25 +12,23 @@ import android.view.ViewGroup;
 
 import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDecorator;
 import com.github.florent37.materialviewpager.sample.R;
-import com.github.florent37.materialviewpager.sample.TestRecyclerViewAdapter;
+import com.github.florent37.materialviewpager.sample.TestRecyclerViewAdapter2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by florentchampigny on 24/04/15.
+ * Created by hp on 01-07-2016.
  */
-public class RecyclerViewFragment extends Fragment {
-
+public class RecyclerViewFragment2 extends Fragment {
     static final boolean GRID_LAYOUT = false;
     private static final int ITEM_COUNT = 100;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private List<Object> mContentItems = new ArrayList<>();
-    Context context;
 
-    public static RecyclerViewFragment newInstance() {
-        return new RecyclerViewFragment();
+    public static RecyclerViewFragment2 newInstance() {
+        return new RecyclerViewFragment2();
     }
 
     @Override
@@ -56,7 +53,7 @@ public class RecyclerViewFragment extends Fragment {
         //Use this now
         mRecyclerView.addItemDecoration(new MaterialViewPagerHeaderDecorator());
 
-        mAdapter = new TestRecyclerViewAdapter(mContentItems);
+        mAdapter = new TestRecyclerViewAdapter2(mContentItems);
 
         //mAdapter = new RecyclerViewMaterialAdapter();
         mRecyclerView.setAdapter(mAdapter);
@@ -65,20 +62,18 @@ public class RecyclerViewFragment extends Fragment {
             /*for (int i = 0; i < ITEM_COUNT; ++i) {
                 mContentItems.add(new Object());
             }*/
-            mContentItems.add(new Object("Aditya","71254639889",R.drawable.image3));
-            mContentItems.add(new Object("Tejesh","987456123",R.drawable.image3));
-            mContentItems.add(new Object("Sravan","897546213",R.drawable.image3));
-            mContentItems.add(new Object("Shehnaz","874596213",R.drawable.image3));
-            mContentItems.add(new Object("Yoga","893256471",R.drawable.image3));
-            mContentItems.add(new Object("Avtansh","99999999999",R.drawable.image3));
-            mContentItems.add(new Object("Surya","99999999999",R.drawable.image3));
-            mContentItems.add(new Object("Yoga","99999999999",R.drawable.image3));
-            mContentItems.add(new Object("Yoga","99999999999",R.drawable.image3));
-            mContentItems.add(new Object("Yoga","99999999999",R.drawable.image3));
-            mContentItems.add(new Object("Yoga","99999999999",R.drawable.image3));
-            mAdapter.notifyDataSetChanged();
+            mContentItems.add(new Object("Google","Title sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Youtube","co sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Facebook","Shirt sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Hungry House","Title sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Pizza Hut","Title sponsor",R.drawable.image2));
+            mContentItems.add(new Object("KFC","Food sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Hungry House","Title sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Hungry House","Title sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Hungry House","Title sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Hungry House","Title sponsor",R.drawable.image2));
+            mContentItems.add(new Object("Hungry House","Title sponsor",R.drawable.image2));
+             mAdapter.notifyDataSetChanged();
         }
     }
 }
-
-

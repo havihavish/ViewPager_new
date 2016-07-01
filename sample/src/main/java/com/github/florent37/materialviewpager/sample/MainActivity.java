@@ -1,29 +1,22 @@
 package com.github.florent37.materialviewpager.sample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
-import com.github.florent37.materialviewpager.sample.fragment.RecyclerViewFragment;
-
-import io.fabric.sdk.android.Fabric;
+import com.github.florent37.materialviewpager.sample.fragment.*;
 
 public class MainActivity extends AppCompatActivity {
 
     private MaterialViewPager mViewPager;
     private Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +28,30 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = mViewPager.getToolbar();
 
+
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do something you want
+                Intent i=new Intent(MainActivity.this,NMainActivity.class);
+                startActivity(i);
+            }
+        });
         mViewPager.getViewPager().setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
 
             @Override
             public Fragment getItem(int position) {
-                switch (position % 4) {
-                    //case 0:
-                    //    return RecyclerViewFragment.newInstance();
-                    //case 1:
-                    //    return RecyclerViewFragment.newInstance();
+                switch (position %4) {
+                    case 0:
+                        return RecyclerViewFragment.newInstance();
+                    case 1:
+                        return RecyclerViewFragment2.newInstance();
                     //case 2:
                     //    return WebViewFragment.newInstance();
                     default:

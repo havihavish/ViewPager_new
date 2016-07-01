@@ -3,11 +3,9 @@ package com.github.florent37.materialviewpager.sample.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.github.florent37.carpaccio.Carpaccio;
 import com.github.florent37.carpaccio.controllers.adapter.OnItemClickListener;
@@ -39,15 +37,20 @@ public class CarpaccioRecyclerViewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         carpaccio = (Carpaccio) view.findViewById(R.id.carpaccio);
 
-        for (int i = 0; i < ITEM_COUNT; ++i)
-                mContentItems.add(new Object());
+       for (int i = 0; i < ITEM_COUNT; ++i)
+                mContentItems.add(new Object("Yoga","99999999999",R.drawable.image1));
 
         carpaccio.mapList("card",mContentItems);
         carpaccio.onItemClick("card", new OnItemClickListener() {
             @Override
+            public void onItemClick(java.lang.Object item, int position, View view) {
+
+            }
+
+           /* @Override
             public void onItemClick(Object o, int i, View view) {
                 Toast.makeText(getActivity(),"position :"+i,Toast.LENGTH_SHORT).show();
-            }
+            }*/
         });
     }
 }
