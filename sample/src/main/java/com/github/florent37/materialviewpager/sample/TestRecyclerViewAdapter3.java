@@ -15,16 +15,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.florent37.materialviewpager.sample.fragment.Object;
+import com.github.florent37.materialviewpager.sample.fragment.Object2;
 
 import java.util.List;
 
 /**
- * Created by Havi Havish on 23-06-16.
+ * Created by hp on 03-07-2016.
  */
-public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerViewAdapter2.PersonViewHolder> {
+public class TestRecyclerViewAdapter3 extends RecyclerView.Adapter<TestRecyclerViewAdapter3.PersonViewHolder> {
 
-    List<Object> contents;
+    List<Object2> contents;
 
     static final int TYPE_HEADER = 0;
     static final int TYPE_CELL = 1;
@@ -34,15 +34,15 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
     TextView personAge;
     ImageView personPhoto;
 
-    public TestRecyclerViewAdapter2(List<Object> contents) {
+    public TestRecyclerViewAdapter3(List<Object2> contents) {
         this.contents = contents;
     }
 
-    /*public TestRecyclerViewAdapter22(List<Object> contents) {
+    /*public TestRecyclerViewAdapter32(List<Object2> contents) {
         this.contents = contents;
     }*/
 
-  /*  public TestRecyclerViewAdapter22(List<Object> contents) {this.contents = contents;
+  /*  public TestRecyclerViewAdapter32(List<Object2> contents) {this.contents = contents;
     }*/
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -58,12 +58,12 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
             super(itemView);
 
             context = itemView.getContext();
-            cv = (CardView) itemView.findViewById(R.id.card_view);
+            cv = (CardView) itemView.findViewById(R.id.card_view3);
             personName = (TextView) itemView.findViewById(R.id.person_name);
             personAge = (TextView) itemView.findViewById(R.id.person_contact);
-            personPhoto = (ImageView) itemView.findViewById(R.id.person_photo);
+            
             container=(FrameLayout)itemView.findViewById(R.id.frame_layout);
-            cv.setOnClickListener(this);
+
 
         }
 
@@ -111,7 +111,7 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
 
         context1=parent.getContext();
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_card_small, parent, false);
+                .inflate(R.layout.card3, parent, false);
         return new PersonViewHolder(view) {
         };
 
@@ -123,7 +123,7 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
 
         personViewHolder.personName.setText(contents.get(i).name);
         personViewHolder.personAge.setText(contents.get(i).age);
-        personViewHolder.personPhoto.setImageResource(contents.get(i).photoId);
+
         setAnimation(personViewHolder.container,i);
     }
     private void setAnimation(View viewToAnimate, int position)

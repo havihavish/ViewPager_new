@@ -1,17 +1,20 @@
 package com.github.florent37.materialviewpager.sample;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
-import com.github.florent37.materialviewpager.sample.fragment.*;
+import com.github.florent37.materialviewpager.sample.fragment.RecyclerViewFragment;
+import com.github.florent37.materialviewpager.sample.fragment.RecyclerViewFragment2;
+import com.github.florent37.materialviewpager.sample.fragment.RecyclerViewFragment3;
+import com.github.florent37.materialviewpager.sample.fragment.RecyclerViewFragment4;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,10 +55,12 @@ public class MainActivity extends AppCompatActivity {
                         return RecyclerViewFragment.newInstance();
                     case 1:
                         return RecyclerViewFragment2.newInstance();
-                    //case 2:
-                    //    return WebViewFragment.newInstance();
+                    case 2:
+                        return RecyclerViewFragment3.newInstance();
+                    case 3:
+                        return RecyclerViewFragment4.newInstance();
                     default:
-                        return RecyclerViewFragment.newInstance();
+                        return RecyclerViewFragment2.newInstance();
                 }
             }
 
@@ -117,7 +122,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     mViewPager.notifyHeaderChanged();
-                    Toast.makeText(getApplicationContext(), "Yes, the title is clickable", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse("http://nitdelhi.ac.in/"));
+                    startActivity(i);
+                   // Toast.makeText(getApplicationContext(), "Yes, the title is clickable", Toast.LENGTH_SHORT).show();
                 }
             });
         }

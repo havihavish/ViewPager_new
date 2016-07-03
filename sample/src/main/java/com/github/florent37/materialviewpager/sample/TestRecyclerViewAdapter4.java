@@ -3,14 +3,11 @@ package com.github.florent37.materialviewpager.sample;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,10 +17,9 @@ import com.github.florent37.materialviewpager.sample.fragment.Object;
 import java.util.List;
 
 /**
- * Created by Havi Havish on 23-06-16.
+ * Created by hp on 02-07-2016.
  */
-public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerViewAdapter2.PersonViewHolder> {
-
+public class TestRecyclerViewAdapter4 extends RecyclerView.Adapter<TestRecyclerViewAdapter4.PersonViewHolder> {
     List<Object> contents;
 
     static final int TYPE_HEADER = 0;
@@ -34,15 +30,15 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
     TextView personAge;
     ImageView personPhoto;
 
-    public TestRecyclerViewAdapter2(List<Object> contents) {
+    public TestRecyclerViewAdapter4(List<Object> contents) {
         this.contents = contents;
     }
 
-    /*public TestRecyclerViewAdapter22(List<Object> contents) {
+    /*public TestRecyclerViewAdapter42(List<Object> contents) {
         this.contents = contents;
     }*/
 
-  /*  public TestRecyclerViewAdapter22(List<Object> contents) {this.contents = contents;
+  /*  public TestRecyclerViewAdapter42(List<Object> contents) {this.contents = contents;
     }*/
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -58,12 +54,12 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
             super(itemView);
 
             context = itemView.getContext();
-            cv = (CardView) itemView.findViewById(R.id.card_view);
+            cv = (CardView) itemView.findViewById(R.id.cv);
             personName = (TextView) itemView.findViewById(R.id.person_name);
             personAge = (TextView) itemView.findViewById(R.id.person_contact);
             personPhoto = (ImageView) itemView.findViewById(R.id.person_photo);
             container=(FrameLayout)itemView.findViewById(R.id.frame_layout);
-            cv.setOnClickListener(this);
+
 
         }
 
@@ -71,7 +67,7 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
         public void onClick(View v) {
             Intent i = new Intent(Intent.ACTION_VIEW);
             // RecyclerView.ViewHolder holder = (RecyclerView.ViewHolder) v.getTag();
-            int position = /*holder*/getAdapterPosition();
+            int position = getAdapterPosition();
             switch (position) {
                 case 0:
 
@@ -111,7 +107,7 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
 
         context1=parent.getContext();
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_card_small, parent, false);
+                .inflate(R.layout.card1, parent, false);
         return new PersonViewHolder(view) {
         };
 
@@ -124,19 +120,7 @@ public class TestRecyclerViewAdapter2 extends RecyclerView.Adapter<TestRecyclerV
         personViewHolder.personName.setText(contents.get(i).name);
         personViewHolder.personAge.setText(contents.get(i).age);
         personViewHolder.personPhoto.setImageResource(contents.get(i).photoId);
-        setAnimation(personViewHolder.container,i);
+
     }
-    private void setAnimation(View viewToAnimate, int position)
-    {
-        // If the bound view wasn't previously displayed on screen, it's animated
-        if (position > lastPosition)
-        {
-            Animation animation = AnimationUtils.loadAnimation(context1, android.R.anim.slide_in_left);
-            viewToAnimate.startAnimation(animation);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
-                animation.setDuration(1000);
-            }
-            lastPosition = position;
-        }
-    }
+
 }

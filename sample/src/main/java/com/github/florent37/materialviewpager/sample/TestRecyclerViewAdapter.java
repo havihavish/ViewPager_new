@@ -3,6 +3,7 @@ package com.github.florent37.materialviewpager.sample;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -131,6 +132,9 @@ context1=parent.getContext();
         {
             Animation animation = AnimationUtils.loadAnimation(context1, android.R.anim.slide_in_left);
             viewToAnimate.startAnimation(animation);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
+                animation.setDuration(1000);
+            }
             lastPosition = position;
         }
     }
